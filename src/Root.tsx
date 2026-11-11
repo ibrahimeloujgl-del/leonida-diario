@@ -7,6 +7,8 @@ import { Still } from "remotion";
 import { Avatar, Banner } from "./Gta6/Branding";
 import { Episodio, episodeDuration } from "./Gta6/Episodio";
 import { ep2 } from "./Gta6/episodios/ep2";
+import { ep3 } from "./Gta6/episodios/ep3";
+import { ep4 } from "./Gta6/episodios/ep4";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -30,6 +32,24 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1920}
           defaultProps={{ ep: ep2 }}
+        />
+        <Composition
+          id="Ep3-Regiones"
+          component={Episodio}
+          durationInFrames={episodeDuration(ep3)}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ ep: ep3 }}
+        />
+        <Composition
+          id="Ep4-Historia"
+          component={Episodio}
+          durationInFrames={episodeDuration(ep4)}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ ep: ep4 }}
         />
       </Folder>
       <Folder name="Canal">
