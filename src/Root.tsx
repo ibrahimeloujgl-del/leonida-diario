@@ -3,6 +3,10 @@ import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 import { Curiosidades, CURIOSIDADES_DURATION } from "./Gta6/Curiosidades";
+import { Still } from "remotion";
+import { Avatar, Banner } from "./Gta6/Branding";
+import { Episodio, episodeDuration } from "./Gta6/Episodio";
+import { ep2 } from "./Gta6/episodios/ep2";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -17,6 +21,21 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      <Folder name="Cuenta-atras">
+        <Composition
+          id="Ep2-Personajes"
+          component={Episodio}
+          durationInFrames={episodeDuration(ep2)}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ ep: ep2 }}
+        />
+      </Folder>
+      <Folder name="Canal">
+        <Still id="Avatar" component={Avatar} width={800} height={800} />
+        <Still id="Banner" component={Banner} width={2560} height={1440} />
+      </Folder>
       <Folder name="Elements">
         <Composition
           id="Logo"

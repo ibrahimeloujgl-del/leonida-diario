@@ -17,7 +17,11 @@ const neon = (c: string) =>
   `0 0 12px ${c}, 0 0 36px ${c}, 0 6px 0 rgba(0,0,0,0.5)`;
 
 // Shared top label shown on every curiosity so the viewer keeps context.
-const Header: React.FC<{ index: number; total: number }> = ({ index, total }) => {
+const Header: React.FC<{ index: number; total: number; label: string }> = ({
+  index,
+  total,
+  label,
+}) => {
   const frame = useCurrentFrame();
   return (
     <div
@@ -39,13 +43,27 @@ const Header: React.FC<{ index: number; total: number }> = ({ index, total }) =>
     >
       <span style={{ color: colors.cyan, textShadow: neon(colors.cyan) }}>GTA VI</span>
       <span>
-        CURIOSIDAD {index}/{total}
+        {label} {index}/{total}
       </span>
     </div>
   );
 };
 
-export const Hook: React.FC = () => {
+export type HookProps = {
+  big?: string;
+  title1?: string;
+  title2?: string;
+  tag?: string;
+  badge?: string;
+};
+
+export const Hook: React.FC<HookProps> = ({
+  big = "7",
+  title1 = "CURIOSIDADES",
+  title2 = "DE GTA 6",
+  tag = "que quizá no sabías 👀",
+  badge,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({ frame, fps, config: { damping: 12 } });
@@ -54,6 +72,36 @@ export const Hook: React.FC = () => {
   return (
     <AbsoluteFill>
       <Background />
+      {badge ? (
+        <div
+          style={{
+            position: "absolute",
+            top: 170,
+            left: 0,
+            right: 0,
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: display,
+              fontSize: 92,
+              letterSpacing: 2,
+              color: colors.white,
+              background: colors.pink,
+              padding: "6px 40px",
+              borderRadius: 20,
+              boxShadow: `0 0 40px ${colors.pink}`,
+              rotate: "-3deg",
+              opacity: interpolate(frame, [0, 6], [0, 1], clamp),
+              scale: interpolate(frame, [0, 8], [1.4, 1], { ...clamp, easing: Easing.out(Easing.back(2)) }),
+            }}
+          >
+            {badge}
+          </div>
+        </div>
+      ) : null}
       <AbsoluteFill
         style={{
           justifyContent: "center",
@@ -74,7 +122,7 @@ export const Hook: React.FC = () => {
             rotate: interpolate(pop, [0, 1], [-12, -4]) + "deg",
           }}
         >
-          7
+          {big}
         </div>
         <div
           style={{
@@ -87,9 +135,9 @@ export const Hook: React.FC = () => {
             translate: `0px ${interpolate(pop2, [0, 1], [60, 0])}px`,
           }}
         >
-          CURIOSIDADES
+          {title1}
           <br />
-          DE GTA 6
+          {title2}
         </div>
         <div
           style={{
@@ -108,7 +156,7 @@ export const Hook: React.FC = () => {
             }),
           }}
         >
-          que quizá no sabías 👀
+          {tag}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
@@ -124,6 +172,7 @@ export type FactProps = {
   image: string;
   hue: number;
   duration?: number;
+  label?: string;
 };
 
 export const Fact: React.FC<FactProps> = ({
@@ -135,6 +184,7 @@ export const Fact: React.FC<FactProps> = ({
   image,
   hue,
   duration,
+  label = "CURIOSIDAD",
 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames: compDuration } = useVideoConfig();
@@ -145,7 +195,7 @@ export const Fact: React.FC<FactProps> = ({
   return (
     <AbsoluteFill>
       <Background hue={hue} />
-      <Header index={index} total={total} />
+      <Header index={index} total={total} label={label} />
       <div style={{ position: "absolute", left: 80, right: 80, top: 210 }}>
         <div
           style={{
@@ -164,7 +214,7 @@ export const Fact: React.FC<FactProps> = ({
         <div
           style={{
             fontFamily: display,
-            fontSize: big.length > 9 ? 150 : 190,
+            fontSize: big.length > 12 ? 118 : big.length > 9 ? 150 : 190,
             lineHeight: 1.02,
             marginTop: 8,
             color: bigColor,
@@ -228,7 +278,21 @@ export const Fact: React.FC<FactProps> = ({
   );
 };
 
-export const Outro: React.FC = () => {
+export type OutroProps = {
+  kicker?: string;
+  line1?: string;
+  line2?: string;
+  cta1?: string;
+  cta2?: string;
+};
+
+export const Outro: React.FC<OutroProps> = ({
+  kicker = "SALE EL",
+  line1 = "19 NOV",
+  line2 = "2026",
+  cta1 = "¿Cuál te sorprendió más?",
+  cta2 = "Dímelo en comentarios 👇",
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({ frame, fps, config: { damping: 12 } });
@@ -257,7 +321,7 @@ export const Outro: React.FC = () => {
             opacity: pop,
           }}
         >
-          SALE EL
+          {kicker}
         </div>
         <div
           style={{
@@ -269,9 +333,9 @@ export const Outro: React.FC = () => {
             scale: interpolate(pop, [0, 1], [0.4, 1]) * pulse,
           }}
         >
-          19 NOV
+          {line1}
           <br />
-          2026
+          {line2}
         </div>
         <div
           style={{
@@ -290,9 +354,9 @@ export const Outro: React.FC = () => {
             translate: `0px ${interpolate(frame, [20, 32], [40, 0], clamp)}px`,
           }}
         >
-          ¿Cuál te sorprendió más?
+          {cta1}
           <br />
-          <span style={{ color: colors.cyan }}>Dímelo en comentarios 👇</span>
+          <span style={{ color: colors.cyan }}>{cta2}</span>
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
