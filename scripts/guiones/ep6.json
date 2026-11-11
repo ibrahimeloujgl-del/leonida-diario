@@ -1,0 +1,15 @@
+{
+  "voice": "/home/user/piper-voices/es_ES-davefx-medium.onnx",
+  "lengthScale": 0.9,
+  "pause": 0.3,
+  "lines": [
+    {"say": "Faltan dos días para GTA seis. Esta es la Florida real que hay escondida en el juego.", "show": "Faltan 2 días para GTA 6. Esta es la Florida real que hay escondida en el juego."},
+    {"say": "Uno: Vice City es Miami, con sus playas, sus hoteles art déco y sus neones.", "scene": true},
+    {"say": "Dos: Leonida es Florida. Hasta los nombres riman.", "scene": true},
+    {"say": "Tres: los Leonida Keys son los Cayos de Florida, las islas del sur.", "scene": true},
+    {"say": "Cuatro: Grassrivers recuerda a los Everglades, con pantanos y caimanes.", "scene": true},
+    {"say": "Cinco: el caimán que entra en una tienda en el primer tráiler recuerda a los vídeos virales de Florida.", "scene": true},
+    {"say": "Seis: y los vídeos de redes sociales del tráiler parodian el famoso meme de Florida Man.", "scene": true},
+    {"say": "Faltan dos días. ¿Qué rincón de Florida quieres explorar primero? Dímelo en comentarios.", "show": "Faltan 2 días. ¿Qué rincón de Florida quieres explorar primero? Dímelo en comentarios.", "scene": true}
+  ]
+}
