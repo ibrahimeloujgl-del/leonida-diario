@@ -2,12 +2,21 @@ import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
+import { Curiosidades, CURIOSIDADES_DURATION } from "./Gta6/Curiosidades";
 
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="GTA6Curiosidades"
+        component={Curiosidades}
+        durationInFrames={CURIOSIDADES_DURATION}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       <Folder name="Elements">
         <Composition
           id="Logo"

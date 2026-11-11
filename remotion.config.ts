@@ -8,3 +8,11 @@ import { Config } from "@remotion/cli/config";
 Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+
+// Cloud container only: use the pre-installed Chromium (remotion.media download is blocked there).
+// On any other machine this file doesn't exist and Remotion downloads its own browser.
+import { existsSync } from "node:fs";
+if (existsSync("/opt/pw-browsers/chromium")) {
+  Config.setBrowserExecutable("/opt/pw-browsers/chromium");
+  Config.setChromeMode("chrome-for-testing");
+}
