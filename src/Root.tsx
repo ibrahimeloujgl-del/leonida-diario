@@ -9,6 +9,7 @@ import { Episodio, episodeDuration } from "./Gta6/Episodio";
 import { ep2 } from "./Gta6/episodios/ep2";
 import { ep3 } from "./Gta6/episodios/ep3";
 import { ep4 } from "./Gta6/episodios/ep4";
+import { ep5 } from "./Gta6/episodios/ep5";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -50,6 +51,15 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1920}
           defaultProps={{ ep: ep4 }}
+        />
+        <Composition
+          id="Ep5-ViceCity"
+          component={Episodio}
+          durationInFrames={episodeDuration(ep5)}
+          fps={30}
+          width={1080}
+          height={1920}
+          defaultProps={{ ep: ep5 }}
         />
       </Folder>
       <Folder name="Canal">
