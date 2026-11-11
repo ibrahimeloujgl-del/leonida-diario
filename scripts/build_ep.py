@@ -18,7 +18,7 @@ MERGES = [
     (["tres", "D"], "3D"), (["PlayStation", "cinco"], "PlayStation 5"), (["PlayStation", "dos"], "PlayStation 2"),
     (["cuatrocientos", "setenta", "y", "cinco"], "475"), (["doscientos", "veinte"], "220"),
     (["dos", "mil", "veintiséis"], "2026"), (["dos", "mil", "veinticinco"], "2025"), (["dos", "mil", "veintitrés"], "2023"),
-    (["dos", "mil", "veintidós"], "2022"), (["dos", "mil", "trece"], "2013"), (["dos", "mil", "dos"], "2002"),
+    (["dos", "mil", "veintidós"], "2022"), (["dos", "mil", "veintiuno"], "2021"), (["dos", "mil", "trece"], "2013"), (["dos", "mil", "dos"], "2002"),
     (["dos", "mil", "seis"], "2006"), (["mil", "novecientos", "ochenta", "y", "seis"], "1986"),
     (["mil", "novecientos", "ochenta", "y", "cuatro"], "1984"),
 ]
